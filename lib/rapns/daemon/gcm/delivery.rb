@@ -44,6 +44,7 @@ module Rapns
         end
 
         def ok(response)
+          ## FIXME: Net::HTTP isn't unzipping this for us, which would be expected but isn't happening.
           unzipped = Zlib::GzipReader.new(StringIO.new(response.body.to_s)).read
           body = multi_json_load(unzipped)
 
