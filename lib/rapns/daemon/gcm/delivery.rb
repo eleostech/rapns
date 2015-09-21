@@ -44,7 +44,8 @@ module Rapns
         end
 
         def ok(response)
-          body = multi_json_load(response.body)
+          unzipped = Zlib::GzipReader.new(StringIO.new(response.body.to_s)).read
+          body = multi_json_load(unzipped)
 
           if body['failure'].to_i == 0
             mark_delivered
