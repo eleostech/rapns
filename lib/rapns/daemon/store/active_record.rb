@@ -87,7 +87,8 @@ module Rapns
         end
 
         def after_daemonize
-          reconnect_database
+          Rapns.logger.warn("This fork no longer supports daemonization because reconnect_database was intentionally removed.")
+          raise "This fork no longer supports daemonization."
         end
       end
     end
