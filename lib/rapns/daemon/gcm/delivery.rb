@@ -5,7 +5,7 @@ module Rapns
       class Delivery < Rapns::Daemon::Delivery
         include Rapns::MultiJsonHelper
 
-        GCM_URI = URI.parse('https://android.googleapis.com/gcm/send')
+        GCM_URI = URI.parse('https://fcm.googleapis.com/fcm/send')
         UNAVAILABLE_STATES = ['Unavailable', 'InternalServerError']
 
         def initialize(app, http, notification, batch)
